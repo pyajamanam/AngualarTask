@@ -1,0 +1,34 @@
+<article
+  class="course-card-item row xs-12 p-4 border border-success my-3"
+  *ngIf="card"
+>
+  <div class="col-8">
+    <div class="course-card-item-header my-2 mx-2">
+      <h3>{{ card.title }}</h3>
+    </div>
+    <div class="course-card-item-info my-2 mx-2">
+      <p>{{ card.description }}</p>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="course-card-item-infoblock my-2 mx-2">
+      <label class="course-card-item-infoblock-label"><b>Authors: </b></label>
+      <span class="course-card-item-infoblock-content">
+        {{ card.authors | stringJoiner }}
+      </span>
+    </div>
+    <div class="course-card-item-infoblock my-2 mx-2">
+      <label class="course-card-item-infoblock-label"><b>Duration: </b></label>
+      <span class="course-card-item-infoblock-content">
+        {{ card.duration | m2h }} hours
+      </span>
+    </div>
+    <div class="course-card-item-infoblock my-2 mx-2">
+      <label class="course-card-item-infoblock-label"><b>Created: </b></label>
+      <span class="course-card-item-infoblock-content">
+        {{ card.creationDate | dateConvert }}
+      </span>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</article>

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/66f275a3-39ed-4931-829c-e7c5428078e8/resourceGroups/DefaultResourceGroup-CUS/providers/Microsoft.Web/sites/deepangular",
+    "appService.deploySubpath": "."
+}

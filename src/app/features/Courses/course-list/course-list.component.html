@@ -1,0 +1,35 @@
+<app-search></app-search>
+<app-course-card [card]="course"  
+ *ngFor="let course of courses">
+  <div class="course-card-item-buttons my-4 mx-2 d-flex justify-content-around">
+    <app-button
+      label="Show Course"
+      [width]="180"
+      [height]="40"
+      (clickChange)="onShowCourse()"
+    ></app-button>
+    <ng-container *ngIf="editable">
+      <app-button 
+        [icon]="editIcon"
+        [width]="40"
+        [height]="40"
+        (clickChange)="onCourseEdit()"
+      ></app-button>
+      <ng-content></ng-content>
+      <app-button
+        [icon]="deleteIcon"
+        [width]="40"
+        [height]="40"
+        (clickChange)="onCourseDelete()"
+      ></app-button>
+    </ng-container>
+  </div>
+</app-course-card>
+<app-info *ngIf="courses?.length === 0" [text]="infoText" [title]="infoTitle">
+  <app-button
+    label="Add new Course"
+    [width]="180"
+    [height]="40"
+    class="d-flex justify-content-center"
+  ></app-button>
+</app-info>

@@ -1,0 +1,80 @@
+<form class="my-4" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+    <h2 class="text-center">Login</h2>
+    <div class="form-group my-2 w-25 mx-auto">
+      <label for="login_email_12836">Email</label>
+      <input
+        type="text"
+        id="login_email_12836"
+        class="form-control border border-warning"
+        name="email"
+        #email="ngModel"
+        [(ngModel)]="model.email"
+        AppEmailCustomValidator
+        required
+      />
+      <p
+        class="text-danger"
+        *ngIf="
+          (email.touched && !email.dirty) || (loginForm.submitted && !email.valid)
+        "
+      >
+        Email is required
+      </p>
+      <p
+      class="text-danger"
+      *ngIf="
+        (email.touched && !email.valid) || (loginForm.submitted && !email.valid)
+      "
+    >
+      Email is not valid
+    </p> 
+    </div>
+    <div class="form-group my-2 w-25 mx-auto">
+      <label for="login_password_2131236">Password</label>
+      <input
+        type="password"
+        id="login_password_2131236"
+        class="form-control border border-warning"
+        name="password"
+        [(ngModel)]="model.password"
+        #password="ngModel"
+        required
+        passwordStrength
+        [minlength]="6"
+      />
+      <p
+        class="text-danger"
+        *ngIf="
+          (password.touched && !password.dirty) ||
+          (loginForm.submitted && !password.valid)
+        "
+      >
+        Password is required
+      </p>
+      <p
+        class="text-danger"
+        *ngIf="
+          (password.touched && !password.valid) &&
+          (loginForm.submitted && !password.valid)
+        "
+      >
+        Password is invalid
+      </p>
+      
+    </div>
+    <div class="mx-auto d-flex justify-content-center my-4">
+      <app-button
+        type="submit"
+        [width]="lwidth"
+        [height]="lheight"
+        label="Login"
+      ></app-button>
+    </div>
+    <div>
+      <p class="text-center">If you don't have an account you can</p>
+      <div class="mx-auto d-flex justify-content-center">
+        <a class="text-center" href="#">Registration</a>
+      </div>
+    </div>
+  </form>
+  
