@@ -1,18 +1,30 @@
-<div class="my-3 d-flex row xs-12 justify-content-between">
-    <div class="w-75">
+<!-- <form #f="ngForm" class="form-inline my-8 my-lg-0" (ngSubmit)="onSubmit(f)">
+  <fieldset class="search-row">
+    <legend>Search:</legend>
+
+    <div class="input-box input">
       <input
-        type="text"
-        class="form-control w-100 border border-warning"
-        [(ngModel)]="searchInput"
+        type="search"
+        [(ngModel)]="input"
+        name="input"
+        class="form-control"
         [placeholder]="placeholder"
       />
     </div>
-    <app-button
-      label="Search"
-      [width]="140"
-      [height]="40"
-      class="d-flex justify-content-center w-25"
-      (clickChange)="onSearch()"
-    ></app-button>
-  </div>
-  
+
+    <app-button text="Search"></app-button>
+  </fieldset>
+</form> -->
+
+     
+<form #f="ngForm"  class="form-inline my-8 my-lg-0" (ngSubmit)="onSubmit(f)" class="form-inline my-8 my-lg-0">
+  <input
+  type="search"
+  [(ngModel)]="input"
+  name="input"
+  style="width: 80%;"
+  class="form-control"
+  [placeholder]="placeholder"
+/>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>

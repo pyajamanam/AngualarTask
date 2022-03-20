@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/authorization/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
   public model: any = {};
 
   public emailValid = true;
@@ -19,9 +20,22 @@ export class LoginComponent implements OnInit {
   }
 @Output() newItemEvent = new EventEmitter<string>();
 
-  onSubmit(loginForm: NgForm) {
+  onSubmit(form: NgForm) {
     debugger;
     this.newItemEvent.emit("Hi");
-    console.log("form: ", loginForm);
+    console.log("form: ", form);
+
+    if (form.valid) {
+      console.log('form submitted');
+      this.authService.login({
+        email: this.model.email,
+        password: this.model.password,
+      });
+    } else {
+      Object.keys(form.controls).forEach((key) => {
+        form.form.controls[key].markAsTouched();
+      });
+    }
+
   }
 }

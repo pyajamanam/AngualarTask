@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import {CoursesModule}  from './features/Courses/courses.module';
 import { RegistrationModule } from './features/Registration/registration.module';
 import { LoginModule } from './features/login/login.module';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +17,7 @@ import { LoginModule } from './features/login/login.module';
     CoursesModule
   ,RegistrationModule
 ,LoginModule],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

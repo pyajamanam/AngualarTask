@@ -1,4 +1,4 @@
-<form class="my-4" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+<form class="my-4" (ngSubmit)="onSubmit(Form)" #Form="ngForm">
     <h2 class="text-center">Login</h2>
     <div class="form-group my-2 w-25 mx-auto">
       <label for="login_email_12836">Email</label>
@@ -15,7 +15,7 @@
       <p
         class="text-danger"
         *ngIf="
-          (email.touched && !email.dirty) || (loginForm.submitted && !email.valid)
+          (email.touched && !email.dirty) || (Form.submitted && !email.valid)
         "
       >
         Email is required
@@ -23,7 +23,7 @@
       <p
       class="text-danger"
       *ngIf="
-        (email.touched && !email.valid) || (loginForm.submitted && !email.valid)
+        (email.touched && !email.valid) || (Form.submitted && !email.valid)
       "
     >
       Email is not valid
@@ -38,37 +38,19 @@
         name="password"
         [(ngModel)]="model.password"
         #password="ngModel"
-        required
+        
         passwordStrength
         [minlength]="6"
       />
-      <p
-        class="text-danger"
-        *ngIf="
-          (password.touched && !password.dirty) ||
-          (loginForm.submitted && !password.valid)
-        "
+     
+      <span *ngIf="password.errors?.['required']">Password is required.</span>
+      <span *ngIf="password.errors?.['minlength']"
+        >Password should contain at least 6 characters</span
       >
-        Password is required
-      </p>
-      <p
-        class="text-danger"
-        *ngIf="
-          (password.touched && !password.valid) &&
-          (loginForm.submitted && !password.valid)
-        "
-      >
-        Password is invalid
-      </p>
-      
     </div>
     <div class="mx-auto d-flex justify-content-center my-4">
-      <app-button
-        type="submit"
-        [width]="lwidth"
-        [height]="lheight"
-        label="Login"
-      ></app-button>
+      <app-button text="Sign in"></app-button>
+     
     </div>
     <div>
       <p class="text-center">If you don't have an account you can</p>
