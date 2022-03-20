@@ -1,0 +1,52 @@
+:host {
+  width: 100%;
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.duration-caption {
+  margin-bottom: 36px;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding-top: 30px;
+  &__col {
+    width: 50%;
+    &_authors-list {
+      display: flex;
+      justify-items: center;
+    }
+  }
+}
+
+.authors-list {
+  &__label {
+    width: 100%;
+    text-align: end;
+  }
+  &__l {
+    margin: 0px;
+  }
+  &__li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+  }
+}

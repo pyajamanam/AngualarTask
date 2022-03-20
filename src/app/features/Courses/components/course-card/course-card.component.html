@@ -1,0 +1,71 @@
+<!-- <article class="card">
+  <div class="">
+    <h3 class="title">{{ title }}</h3>
+    <p>{{ description }}</p>
+  </div>
+  <div class="" class="root__info-list-col info-list-col">
+    <table>
+      <tbody>
+        <tr>
+          <td><h4 class="info-list-col__header">Authors:</h4></td>
+          <td>
+            <ul class="">
+              <li *ngFor="let author of authors">
+                <span>{{ author }}</span>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><h4 class="info-list-col__header">Duration:</h4></td>
+          <td>
+            <span *ngIf="duration != null">
+              {{ duration | duration }}
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td><h4 class="info-list-col__header">Created:</h4></td>
+          <td>
+            <span>{{ creationDate  }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-content></ng-content>
+  </div>
+</article> -->
+
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text col-8">{{description}}</p>
+    
+    <div class="card-text col-4" class="root__info-list-col info-list-col">
+     
+              <ul class="">
+                <li *ngFor="let author of authors">
+                  <span>{{ author }}</span>
+                </li>
+              </ul>
+         
+          <tr>
+            <td><h4 class="info-list-col__header">Duration:</h4></td>
+            <td>
+              <span *ngIf="duration != null">
+                {{ duration | duration }}
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td><h4 class="info-list-col__header">Created:</h4></td>
+            <td>
+              <span>{{ creationDate  }}</span>
+            </td>
+          </tr>
+      <ng-content></ng-content>
+    </div>
+  
+</div>
+    <ng-content></ng-content>
+  </div>

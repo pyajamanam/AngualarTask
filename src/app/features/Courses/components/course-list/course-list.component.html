@@ -1,0 +1,32 @@
+  <div *ngFor="let course of courses">
+    <app-course-card
+      [title]="course.title"
+      [authors]="course.authors"
+      [description]="course.description"
+      [creationDate]="course.creationDate"
+      [duration]="course.duration"
+    >
+      <div class="controls">
+        <a routerLink="/courses/view/{{ course.id }}"
+          ><app-button text="Show Dcourse"></app-button
+        ></a>
+        <a routerLink="/courses/edit/{{ course.id }}">
+          <app-button text="EDIT"
+            *ngIf="isCoursesEditable"
+            [rightIconName]="'faEdit'"
+          ></app-button
+        ></a>
+        <app-button
+          *ngIf="isCoursesEditable"
+          [rightIconName]="'faTrashAlt'"
+          (click)="delete(course.id)"
+        ></app-button>
+      </div>
+    </app-course-card>
+  </div>
+  <app-simple-modal
+    *ngIf="isModalVisible"
+    [title]="'CONFIRMATION REQUIRED'"
+    [message]="'Do you really want to delete the course?'"
+    (resultEvent)="confirmDelete($event)"
+  ></app-simple-modal>

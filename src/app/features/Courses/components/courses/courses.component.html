@@ -1,0 +1,63 @@
+<div class="container">
+ 
+ 
+  <app-header [isAuthorized]="!isAuthorized">
+    <div class="header-controls">
+      <!-- <a *ngIf="!isAuthorized" routerLink="/login"
+        ><app-button [text]="'login'"></app-button
+      ></a>
+      <a *ngIf="!isAuthorized" routerLink="/registration"
+        ><app-button [text]="'register'"></app-button
+      ></a> -->
+    
+
+      <app-button
+        *ngIf="isAuthorized"
+        (click)="logout()"
+        [text]="'log out'"
+      ></app-button>
+      <!-- <app-button
+        *ngIf="!isModalVisible"
+        [text]="'SHOW MODAL'"
+        (click)="toggleModal(undefined)"
+      ></app-button> -->
+    </div>
+  </app-header>
+  <app-search style="width: 100%;"
+  [placeholder]="'Search Courses...'"
+  (searchEvent)="search($event)"
+></app-search>
+  <div class="container">
+    <app-simple-modal
+      *ngIf="isModalVisible"
+      [title]="'Hello'"
+      [message]="'Test message'"
+      (resultEvent)="toggleModal($event)"
+    ></app-simple-modal>
+
+    <!-- <app-search
+      [placeholder]="'OK, angular...'"
+      (searchEvent)="search($event)"
+    ></app-search> -->
+
+    <h2>Available courses:</h2>
+    <app-course-list class="row" 
+      [courses]="courses"
+      [isCoursesEditable]="isAdmin"
+    ></app-course-list>
+    </div>
+
+  <app-info
+    *ngIf="isAdmin && courses.length === 0"
+    [title]="'Your list is empty'"
+    [text]="
+      'Please use the \'Add new course\' button to add your first course '
+    "
+  >
+  </app-info>
+  <div class="text-center"> 
+  <a routerLink="/courses/add" 
+    ><app-button  [disabled]="isAdmin"  [text]="'Add new course'"></app-button
+  ></a>
+</div>
+</div>

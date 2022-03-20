@@ -1,0 +1,140 @@
+<form class="my-4" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+      <label>Title:</label>
+      <div class="form-inline mx-sm-3 mb-2">
+        <input
+          type="text"
+          id="title"
+          name="title"
+          formControlName="title"
+          id="title"
+          class="form-control border border-warning"
+          required
+        />
+        <div
+          *ngIf="title.invalid && (title.dirty || title.touched)"
+          class="input-box__alert"
+        >
+          <span *ngIf="title.errors?.['required']">Title is required.</span>
+        </div>
+    <app-button
+      [text]="courseId ? 'Edit course' : 'Create course'"
+      class="btn"
+    ></app-button>
+  </div>
+
+
+    <div class="form-group">
+      <label>Description:</label>
+      <div class="form-group">
+        <textarea
+          type="text"
+          id="title"
+          name="title"
+          class="form-control border border-warning"
+          formControlName="description"
+        ></textarea>
+        <div
+          *ngIf="
+            description.invalid && (description.dirty || description.touched)
+          "
+          class="input-box__alert"
+        >
+          <span *ngIf="description.errors?.['required']" style="color: red;"
+            >Description is required.</span
+          >
+        </div>
+      </div>
+    </div>
+
+  <fieldset class="info">
+    <legend>Info</legend>
+    <div class="form-group">
+          <label>Add author:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="form-group border border-warning"
+              formControlName="newAuthor"
+            />
+            <!-- <div
+              *ngIf="
+                newAuthor.invalid &&
+                newAuthor.value !== '' &&
+                (newAuthor.dirty || newAuthor.touched)
+              "
+              class="input-box__alert"
+            > -->
+              <span style="color: red;"
+                *ngIf="newAuthor.errors?.['charactersError']"
+                >{{newAuthor.errors?.['charactersError'].msg}}</span
+              >
+              
+      </div>
+      <app-button
+      [text]="'Add author'"
+      (click)="addAuthor($event)"
+    ></app-button>
+      <div class="form-group mx-sm-3 mb-2">
+          <label>Set duration (min):</label>
+          <div class="form-inline mx-sm-3 mb-2">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="form-group"
+              formControlName="duration"
+            />
+            <div
+              *ngIf="duration.invalid && (duration.dirty || duration.touched)"
+              class="input-box__alert"
+            >
+              <span *ngIf="duration.errors?.['required']" style="color: red;"
+                >Duration is required</span
+              >
+              <span *ngIf="duration.errors?.['min']"  style="color: red;"
+                >Duration should be more then 00:00 </span
+              >
+            </div>
+          </div>
+
+        <div class="field-box button duration-caption">
+          <div class="input-box input">
+            Duration: {{ duration.value | duration }} h
+          </div>
+        </div>
+      </div>
+    <div class="form-group">
+      <div class="field-box">
+        <label class="authors-list__label">Authors</label>
+        <input
+          formArrayName="authors"
+          [disabled]="false"
+          style="visibility: hidden; position: absolute"
+        />
+        <ul class="authors-list__l">
+          <li
+            *ngFor="let author of authors.value; index as i"
+            class="authors-list__li"
+          >
+            <span>{{ author.name }}</span
+            ><app-button
+              class="button"
+              [text]="'Remove'"
+              (click)="removeAuthor(i)"
+            ></app-button>
+          </li>
+          <li
+            *ngIf="authors.invalid && (authors.dirty || authors.touched)"
+            class="authors-list__li"
+          >
+            <span style="color: red">There should be at least 1 author!</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+</form>

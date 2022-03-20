@@ -1,0 +1,45 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border: 2px solid var(--main-border-color);
+  border-radius: 10px;
+  height: 100%;
+  box-sizing: border-box;
+  &__col {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0px;
+    height: 100%;
+    > * {
+      overflow: hidden;
+    }
+  }
+  &__info-list-col {
+    min-width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  * {
+    text-overflow: ellipsis;
+  }
+}
+
+.title {
+  flex-shrink: 0;
+}
+
+.info-list-col {
+  &__header {
+    margin: 0px;
+  }
+  &__list {
+    padding-left: 15px;
+  }
+  & > table {
+    border-spacing: 20px;
+  }
+}

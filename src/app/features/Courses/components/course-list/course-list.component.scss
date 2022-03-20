@@ -1,0 +1,16 @@
+.root {
+  padding-left: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  & > li {
+    height: 300px;
+    overflow: hidden;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 5px;
+}
