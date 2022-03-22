@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
 import { map, Observable, take } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { AuthorsStateFacade } from 'src/app/store/authors/authors.facade';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorizedGuard implements CanLoad {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authfacade: AuthorsStateFacade, private router: Router) {}
 
   canLoad(
     route: Route,

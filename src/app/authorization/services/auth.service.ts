@@ -70,21 +70,22 @@ export class AuthService {
           }
         })
       )
-      .subscribe();
+      //.subscribe();
   }
 
   logout() {
-    if (this.isAuthorized$$.value != true) {
-      return;
-    }
+    // if (this.isAuthorized$$.value != true) {
+    //   return new Observable<any>();
+    //  // return;
+    // }
 
     const token = this.sessionStorageService.getToken();
 
-    if (token == null) {
-      return;
-    }
+    // if (token == null) {
+    //   return new Observable();
+    // }
 
-    this.http.delete('http://localhost:3000/logout').subscribe();
+    this.http.delete('http://localhost:3000/logout');
 
     this.isAuthorized$$.next(false);
     this.sessionStorageService.deleteToken();
