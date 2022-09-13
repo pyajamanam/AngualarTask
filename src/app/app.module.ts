@@ -5,9 +5,11 @@ import { AppComponent } from './app.component';
 import {CoursesModule}  from './features/Courses/courses.module';
 import { RegistrationModule } from './features/Registration/registration.module';
 import { LoginModule } from './features/login/login.module';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
